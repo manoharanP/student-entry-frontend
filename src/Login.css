@@ -1,0 +1,94 @@
+/* Center the login container */
+.login-container {
+    width: 350px;
+    margin: 10% auto;  /* Centers vertically and horizontally */
+    padding: 25px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Style the login heading */
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 22px;
+}
+
+/* Style input fields */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box; /* Ensures padding does not affect width */
+}
+
+/* Style login button */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Error message styling */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.dashboard-container {
+    position: relative;
+    padding: 20px;
+  }
+  
+  .logout-button-container {
+    position: absolute;
+    top: -250px;
+    right: -500px;
+  }
+
+  .register-button-container {
+    position: absolute;
+    top: -400px;
+    right: -500px;
+  }
+
+  .register-button {
+    padding: 8px 12px;
+    background-color: #884dff; /* Change this color as needed */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .logout-button {
+    padding: 8px 12px;
+    background-color: #ff4d4d; /* Change this color as needed */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .logout-button:hover {
+    background-color: #ff1a1a; /* Change hover color as needed */
+  }
+  

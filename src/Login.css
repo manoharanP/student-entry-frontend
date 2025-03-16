@@ -62,6 +62,21 @@ button:hover {
     right: -500px;
   }
 
+  
+  .logout-button {
+    padding: 8px 12px;
+    background-color: #ff4d4d; /* Change this color as needed */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .logout-button:hover {
+    background-color: #ff1a1a; /* Change hover color as needed */
+  }
+
   .register-button-container {
     position: absolute;
     top: -400px;
@@ -78,17 +93,6 @@ button:hover {
     font-weight: bold;
   }
   
-  .logout-button {
-    padding: 8px 12px;
-    background-color: #ff4d4d; /* Change this color as needed */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
+  .register-button {
+    background-color: #ab1aff; /* Change hover color as needed */
   }
-  
-  .logout-button:hover {
-    background-color: #ff1a1a; /* Change hover color as needed */
-  }
-  

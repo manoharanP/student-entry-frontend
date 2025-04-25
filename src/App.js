@@ -1,20 +1,23 @@
-import React from "react"; // Removed useState
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./login"; // Import Login Page
-import StudentEntry from "./StudentEntry"; // Move student form to a separate component
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./Home";
+import Login from "./login";
+import Register from "./Register";
+import AdminDashboard from "./AdminDashboard";
 import StudentDashboard from "./StudentDashboard";
 
-function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Login />} /> {/* Default Page: Login */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/student-entry" element={<StudentEntry />} />
-        <Route path="/student-dashboard" element={<StudentDashboard />} />
-      </Routes>
-    </Router>
-  );
-}
+const App = () => {
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/admin-dashboard" element={<AdminDashboard />} />
+                <Route path="/student-dashboard" element={<StudentDashboard />} />
+            </Routes>
+        </Router>
+    );
+};
 
 export default App;

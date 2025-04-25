@@ -1,13 +1,49 @@
 /* Center the login container */
 .login-container {
-    width: 350px;
-    margin: 10% auto;  /* Centers vertically and horizontally */
-    padding: 25px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-image: url('https://images.unsplash.com/photo-1558021212-51b6ecfa0db9'); /* Reference the image URL */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
     text-align: center;
+    overflow: hidden;
+}
+
+.login-content {
+    background: rgba(0, 0, 0, 0.6); /* Add a semi-transparent background */
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.login-form button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-form button:hover {
+    background-color: #0056b3;
 }
 
 /* Style the login heading */
@@ -54,16 +90,15 @@ button:hover {
 .dashboard-container {
     position: relative;
     padding: 20px;
-  }
-  
-  .logout-button-container {
+}
+
+.logout-button-container {
     position: absolute;
     top: -250px;
     right: -500px;
-  }
+}
 
-  
-  .logout-button {
+.logout-button {
     padding: 8px 12px;
     background-color: #ff4d4d; /* Change this color as needed */
     color: white;
@@ -71,28 +106,29 @@ button:hover {
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
-  }
-  
-  .logout-button:hover {
+}
+
+.logout-button:hover {
     background-color: #ff1a1a; /* Change hover color as needed */
-  }
+}
 
-  .register-button-container {
+.register-button-container {
     position: absolute;
-    top: -400px;
+    top: -550px;
     right: -500px;
-  }
+}
 
-  .register-button {
+.register-button {
     padding: 8px 12px;
-    background-color: #884dff; /* Change this color as needed */
+    background-color: #0c21e0; /* Change this color as needed */
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
-  }
-  
-  .register-button {
-    background-color: #ab1aff; /* Change hover color as needed */
-  }
+    margin-top: 10px;
+}
+
+.register-button {
+    background-color: #063657; /* Change hover color as needed */
+}

@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    container_name: student-backend
+    ports:
+      - "3000:3000"
+    env_file: .env
+    depends_on:
+      - mysql
+    networks:
+      - appnet
+
+  mysql:
+    image: mysql:8.0
+    container_name: student-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpasswd
+      MYSQL_DATABASE: student_db
+      MYSQL_USER: nodejs_user
+      MYSQL_PASSWORD: M@no$040710
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - appnet
+
+volumes:
+  mysql-data:
+
+networks:
+  appnet:

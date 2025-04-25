@@ -17,10 +17,11 @@ services:
     container_name: student-mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: rootpasswd
-      MYSQL_DATABASE: student_db
-      MYSQL_USER: localhost
-      MYSQL_PASSWORD: M@no$040710
+  environment:
+    MYSQL_ROOT_PASSWORD: rootpasswd
+    MYSQL_DATABASE: student_db
+    MYSQL_USER: nodejs_user
+    MYSQL_PASSWORD: M@no$040710
     # ports:
     #   - "3306:3306"
     ports:

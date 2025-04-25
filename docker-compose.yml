@@ -21,8 +21,10 @@ services:
       MYSQL_DATABASE: student_db
       MYSQL_USER: nodejs_user
       MYSQL_PASSWORD: M@no$040710
+    # ports:
+    #   - "3306:3306"
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - mysql-data:/var/lib/mysql
     networks:

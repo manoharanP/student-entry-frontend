@@ -2,7 +2,7 @@
 FROM node:latest
 
 # Set working directory
-WORKDIR /STUDENTAPP
+WORKDIR /student-entry-frontend
 
 # Copy package files and install dependencies
 COPY package*.json ./

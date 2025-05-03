@@ -1,5 +1,5 @@
 const express = require("express");
-const mysql = require("mysql");
+const mysql = require("mysql2");
 const cors = require("cors");
 const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
@@ -20,21 +20,38 @@ app.use(cors()); // Allow cross-origin requests
 //     password: "M@no$040710",
 //     database: "student_db"
 // });
-const db = mysql.createConnection({
-    host: "localhost",
+// const db = mysql.createConnection({
+//     host: "mysql",
+//     user: process.env.DB_USER,
+//     password: process.env.DB_PASSWORD,
+//     database: process.env.DB_NAME
+// });
+// const db = mysql.createConnection({
+//     host: process.env.DB_HOST,        // should be "mysql"
+//     user: process.env.DB_USER,
+//     password: process.env.DB_PASSWORD,
+//     database: process.env.DB_NAME
+// });
+
+const db = mysql.createPool({
+    host:process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
+    database: process.env.DB_NAME,
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 10
 });
 
+
 // Connect to MySQL
-db.connect(err => {
-    if (err) {
-        console.error("Database connection failed: " + err.stack);
-        return;
-    }
-    console.log("Connected to MySQL database!");
-});
+// db.connect(err => {
+//     if (err) {
+//         console.error("Database connection failed: " + err.stack);
+//         return;
+//     }
+//     console.log("Connected to MySQL database!");
+// });
 
 // Middleware to verify token
 const authenticateToken = (req, res, next) => {
@@ -57,17 +74,25 @@ const checkAdmin = (req, res, next) => {
 
 // User Registration Route (For Admin to add new users)
 app.post('/register', async (req, res) => {
-    const { username, password, role } = req.body;
-    
+    const { username, password, email, role } = req.body;
+    console.log();
+    console.log(req.body);
     if (!username || !password || !role) {
+        console.log(req.body);
         return res.status(400).json({ error: "All fields are required" });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
+    console.log(hashedPassword);
 
-    db.query('INSERT INTO users (username, password, role) VALUES (?, ?, ?)', 
-        [username, hashedPassword, role], (err, result) => {
-            if (err) return res.status(500).json({ error: err.message });
+    db.query('INSERT INTO users (username, password, email, role) VALUES (?, ?, ?, ?)',
+        [username, hashedPassword, email , role], (err, result) => {
+            console.log(result);
+            if (err) {
+                console.log(err);
+                return res.status(500).json({ error: err.message });
+
+            }
             res.json({ message: "User registered successfully" });
         }
     );
@@ -108,6 +133,11 @@ app.post('/login', (req, res) => {
         });
     });
 });
+
+// Example: after successful login
+localStorage.setItem('token', response.token);
+localStorage.setItem('role', response.role); // 'admin' or 'student'
+
 
 // API to List All Users (Admin Only)
 app.get("/users", authenticateToken, checkAdmin, (req, res) => {

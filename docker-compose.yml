@@ -12,22 +12,38 @@ services:
     networks:
       - appnet
 
+  frontend:
+    build: .
+    container_name: student-frontend
+    ports:
+      - "3001:3001"
+    env_file: .env
+    # depends_on:
+    #   - student-backend
+    networks:
+      - appnet
+
   mysql:
     image: mysql:8.0
     container_name: student-mysql
     restart: always
     environment:
-  environment:
-    MYSQL_ROOT_PASSWORD: rootpasswd
-    MYSQL_DATABASE: student_db
-    MYSQL_USER: nodejs_user
-    MYSQL_PASSWORD: M@no$040710
+      MYSQL_ROOT_HOST: 'mysql'
+      MYSQL_ROOT_PASSWORD: rootpasswd
+      MYSQL_DATABASE: student_db
+      MYSQL_USER: nodejs_user
+      MYSQL_PASSWORD: M@no$040710
+    # MYSQL_ROOT_PASSWORD: rootpasswd
+    # MYSQL_DATABASE: student_db
+    # MYSQL_USER: nodejs_user
+    # MYSQL_PASSWORD: M@no$040710
     # ports:
     #   - "3306:3306"
     ports:
       - "3307:3306"
     volumes:
       - mysql-data:/var/lib/mysql
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
     networks:
       - appnet
 
